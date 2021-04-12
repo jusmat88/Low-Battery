@@ -17,8 +17,14 @@ public class Enemy : MonoBehaviour
     public void Knockout() {
         print("Knocked out!");
         //Play Knockout Animation
-        //Turn off Rigidbody and Collider.
         rigidBody.bodyType = RigidbodyType2D.Static;
         boxCollider.enabled = false;
+    }
+
+    IEnumerator IdleAction()
+    {
+        yield return new WaitForSeconds(0f);
+
+
     }
 }

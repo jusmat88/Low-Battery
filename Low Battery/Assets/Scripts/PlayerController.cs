@@ -57,13 +57,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.layer == enemyLayer)
+        if (collision.gameObject.GetComponent<Enemy>())
         {
-            print("Hit enemy");
             if (rigidBody.velocity == Vector2.zero) { ReturnToStart(); }
             else { KnockOutEnemy(collision.gameObject); }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
