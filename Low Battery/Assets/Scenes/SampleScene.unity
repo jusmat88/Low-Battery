@@ -1835,6 +1835,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cca955ea8fd914bb3bc23993f007b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reactionDistance: 6
+  catchDistance: 3
+  player: {fileID: 0}
+  currentState: 
 --- !u!1 &1894082095
 GameObject:
   m_ObjectHideFlags: 0
