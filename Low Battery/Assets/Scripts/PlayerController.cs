@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidBody;
     Vector3 mouseDirection;
     [SerializeField] private Transform aimReticle;
+    [SerializeField] private Transform wire;
     [SerializeField] private float batteryLife;
     [SerializeField] private float grableDistance;
     [SerializeField] private float grableStrength;
@@ -19,7 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask GrableMask;
     [SerializeField] private int health = 5;
     private bool isAirborn = false;
-    [SerializeField] private int memoryStickAmount = 0;
+    private bool isCharging = false;
+    public int memoryStickAmount = 0;
 
     private void OnDrawGizmos()
     {
@@ -33,22 +35,65 @@ public class PlayerController : MonoBehaviour
         if (!canMove) { return; }
         AimHand();
         if (Input.GetMouseButtonUp(0)) { ShootGrabler(); }
-        if (Input.GetMouseButtonDown(0)) { AimMagnet(); }
+        //if (Input.GetMouseButton(0)) { 
+        //    wire.transform.position = Vector3.Lerp(handpivot.position, aimReticle.position, 0.5f);
+        //    float distance = Vector3.Distance(handpivot.position, aimReticle.position);
+        //    wire.transform.localScale = new Vector3(distance,0.2f,0);
+        //    wire.transform.rotation = handpivot.rotation;
+        //    grableStrength += Time.deltaTime*3;
+        //    aimReticle.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime);
+        //    if (grableStrength > 20)
+        //    {
+        //        grableStrength = 20;
+        //        aimReticle.transform.localScale = new Vector3(4, 4, 4);
+        //    }
+        //}
+        //else { 
+        //    wire.transform.position = new Vector3(1000, 0, 0); 
+        //    grableStrength = 10;
+        //    wire.transform.localScale = new Vector3(0, 0, 0);
+        //    aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        //}
 
         if (batteryLife > 0)
         {
-            batteryLife -= Time.deltaTime;
-            batteryText.text = batteryLife.ToString("f0") + " %";
+            if (!isCharging)
+            {
+                batteryLife -= Time.deltaTime;
+                batteryText.text = batteryLife.ToString("f0") + " %";
+            }
         }
-        else { canMove = false; }
+        else { canMove = false; StartCoroutine(Death()); }
     }
 
     private void FixedUpdate()
     {
         if (!canMove) { return; }
         RaycastHit2D rayHit = Physics2D.Raycast(handpivot.position, mouseDirection.normalized, grableDistance, GrableMask);
-        if (rayHit.collider != null) { aimReticle.transform.position = rayHit.point; }
-        else { aimReticle.transform.position = new Vector2(100, 100); }
+        if (rayHit.collider != null) { 
+            aimReticle.transform.position = rayHit.point;
+
+            if (Input.GetMouseButton(0))
+            {
+                wire.transform.position = Vector3.Lerp(handpivot.position, aimReticle.position, 0.5f);
+                float distance = Vector3.Distance(handpivot.position, aimReticle.position);
+                wire.transform.localScale = new Vector3(distance, 0.2f, 0);
+                wire.transform.rotation = handpivot.rotation;
+                grableStrength += Time.deltaTime * 3;
+                aimReticle.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime);
+                if (grableStrength > 20)
+                {
+                    grableStrength = 20;
+                    aimReticle.transform.localScale = new Vector3(4, 4, 4);
+                }
+            }
+        }
+        else { aimReticle.transform.position = new Vector2(100, 100);
+            wire.transform.position = new Vector3(1000, 0, 0);
+            grableStrength = 10;
+            wire.transform.localScale = new Vector3(0, 0, 0);
+            aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        }
     }
 
     private void LateUpdate()
@@ -63,8 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Enemy>())
             {
-
-              KnockOutEnemy(collision.gameObject);
+                KnockOutEnemy(collision.gameObject);
             }
         }
 
@@ -75,8 +119,13 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            if (rigidBody.velocity == Vector2.zero) { Damage(); }
+            if (rigidBody.velocity == Vector2.zero) { Damage(); ReturnToStart(); }
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        isAirborn = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -87,14 +136,31 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        if (collision.gameObject.tag == "Spikes")
+        {
+            Damage();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Battery")
         {
-            batteryLife += 10;
-            Destroy(collision.gameObject);
+            isCharging = true;
+            batteryLife += 0.1f;
+            batteryText.text = batteryLife.ToString("f0") + " %";
             if (batteryLife > 100)
             {
                 batteryLife = 100;
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Battery")
+        {
+            isCharging = false;
         }
     }
 
@@ -130,12 +196,17 @@ public class PlayerController : MonoBehaviour
 
     private void Damage()
     {
-        health -= 1;
-        healthText.text = health.ToString();
-        if (health <= 0)
+        if (!isAirborn)
         {
-            //Play Death Animation
-            canMove = false;
+            health -= 1;
+            healthText.text = health.ToString();
+            if (health <= 0)
+            {
+                health = 0;
+                StartCoroutine(Death());
+                canMove = false;
+
+            }
         }
     }
 
@@ -145,8 +216,15 @@ public class PlayerController : MonoBehaviour
         enemy.GetComponent<Enemy>().Knockout();
     }
 
-    private void AimMagnet()
+    private void ReturnToStart()
     {
+        transform.position = new Vector3(0.23f, -2.95f, 0);
+    }
 
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(1f);
+        //Play Death Animation
+        SceneManager.LoadScene(3);
     }
 }
