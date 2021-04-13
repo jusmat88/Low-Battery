@@ -1,5 +1,8 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int health = 5;
     private bool isAirborn = false;
     private bool isCharging = false;
-    [SerializeField] private int memoryStickAmount = 0;
+    public int memoryStickAmount = 0;
 
     private void OnDrawGizmos()
     {
@@ -41,7 +44,7 @@ public class PlayerController : MonoBehaviour
                 batteryText.text = batteryLife.ToString("f0") + " %";
             }
         }
-        else { canMove = false; }
+        else { canMove = false; StartCoroutine(Death()); }
     }
 
     private void FixedUpdate()
@@ -77,6 +80,11 @@ public class PlayerController : MonoBehaviour
         {
             if (rigidBody.velocity == Vector2.zero) { Damage(); }
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        isAirborn = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -150,7 +158,9 @@ public class PlayerController : MonoBehaviour
             {
                 health = 0;
                 //Play Death Animation
+                SceneManager.LoadScene(3);
                 canMove = false;
+
             }
             else
             {
@@ -173,5 +183,11 @@ public class PlayerController : MonoBehaviour
     private void ReturnToStart()
     {
         transform.position = new Vector3(0.23f, -2.95f, 0);
+    }
+
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(3);
     }
 }
