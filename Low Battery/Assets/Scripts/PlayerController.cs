@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private bool canMove = true;
     [SerializeField] private TextMeshProUGUI batteryText;
     [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI memorySticktext;
     [SerializeField] private LayerMask GrableMask;
     [SerializeField] private int health = 5;
     private bool isAirborn = false;
@@ -117,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             memoryStickAmount += 1;
             Destroy(collision.gameObject);
+            memorySticktext.text = memoryStickAmount.ToString();
         }
 
         if (collision.gameObject.tag == "Spikes")
