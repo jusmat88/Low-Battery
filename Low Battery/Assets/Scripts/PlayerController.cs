@@ -142,17 +142,20 @@ public class PlayerController : MonoBehaviour
 
     private void Damage()
     {
-        health -= 1;
-        healthText.text = health.ToString();
-        if (health <= 0)
+        if (!isAirborn)
         {
-            health = 0;
-            //Play Death Animation
-            canMove = false;
-        }
-        else
-        {
-            ReturnToStart();
+            health -= 1;
+            healthText.text = health.ToString();
+            if (health <= 0)
+            {
+                health = 0;
+                //Play Death Animation
+                canMove = false;
+            }
+            else
+            {
+                ReturnToStart();
+            }
         }
     }
 
