@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            if (rigidBody.velocity == Vector2.zero) { Damage(); }
+            if (rigidBody.velocity == Vector2.zero) { Damage(); ReturnToStart(); }
         }
     }
 
@@ -93,6 +93,11 @@ public class PlayerController : MonoBehaviour
         {
             memoryStickAmount += 1;
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Spikes")
+        {
+            Damage();
         }
     }
 
@@ -161,10 +166,6 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene(3);
                 canMove = false;
 
-            }
-            else
-            {
-                ReturnToStart();
             }
         }
     }
