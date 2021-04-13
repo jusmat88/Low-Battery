@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI batteryText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private LayerMask GrableMask;
-    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int health = 5;
+    private bool isAirborn = false;
+    [SerializeField] private int memoryStickAmount = 0;
 
     private void OnDrawGizmos()
     {
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         if (!canMove) { return; }
         AimHand();
         if (Input.GetMouseButtonUp(0)) { ShootGrabler(); }
+        if (Input.GetMouseButtonDown(0)) { AimMagnet(); }
 
         if (batteryLife > 0)
         {
@@ -57,18 +59,42 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Enemy>())
+        if (isAirborn)
         {
-            if (rigidBody.velocity == Vector2.zero) { ReturnToStart(); }
-            else { KnockOutEnemy(collision.gameObject); }
+            if (collision.gameObject.GetComponent<Enemy>())
+            {
+
+              KnockOutEnemy(collision.gameObject);
+            }
+        }
+
+        if (collision.gameObject.layer == GrableMask)
+        {
+            isAirborn = false;
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if (rigidBody.velocity == Vector2.zero) { Damage(); }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<MemoryStick>())
+        if (collision.gameObject.tag == "MemoryStick")
         {
-            //Do stuff
+            memoryStickAmount += 1;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Battery")
+        {
+            batteryLife += 10;
+            Destroy(collision.gameObject);
+            if (batteryLife > 100)
+            {
+                batteryLife = 100;
+            }
         }
     }
 
@@ -99,28 +125,28 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.velocity = Vector2.zero;
         rigidBody.AddForce(mouseDirection.normalized * grableStrength, ForceMode2D.Impulse);
+        isAirborn = true;
     }
 
     private void Damage()
     {
         health -= 1;
         healthText.text = health.ToString();
-        if (health >= 0)
+        if (health <= 0)
         {
             //Play Death Animation
             canMove = false;
         }
     }
 
-    private void ReturnToStart()
-    {
-        //Play Animation
-        Damage();
-    }
-
     private void KnockOutEnemy(GameObject enemy)
     {
         print("knocking out enemy");
         enemy.GetComponent<Enemy>().Knockout();
+    }
+
+    private void AimMagnet()
+    {
+
     }
 }

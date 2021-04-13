@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -13,6 +12,8 @@ public class Enemy : MonoBehaviour
     private const string CHASING = "Chasing";
     private const string CATCHING = "Catching";
     [SerializeField] private string currentState;
+    [SerializeField] private float speed;
+    public GameObject net;
 
     bool isChasing = false;
     bool isCatching = false;
@@ -30,42 +31,43 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         if (!isConcious) { return; }
-        Vector3 playerDirection = ((player.position + new Vector3(0, 0.25f, 0)) - transform.position).normalized;
-        RaycastHit2D ray = Physics2D.Raycast(transform.position + new Vector3(0,0.25f,0), playerDirection, reactionDistance);
-        
+
         float distance = Vector3.Distance(transform.position, player.position);
-
-        Debug.DrawRay(transform.position + new Vector3(0, 0.15f, 0), playerDirection * reactionDistance);
-
-        if (ray.collider.GetComponent<PlayerController>())
+        if (distance < reactionDistance)
         {
-            if (distance < reactionDistance)
+            if (distance > catchDistance)
             {
-                if (distance > catchDistance)
-                {
-                    ChangeState(CHASING);
-                }
-                
-                if (distance <= catchDistance)
-                {
-                    ChangeState(CATCHING);
-                }
+                ChangeState(CHASING);
+            }
+
+            if (distance <= catchDistance)
+            {
+                ChangeState(CATCHING);
             }
         }
         else
         {
             ChangeState(IDLE);
         }
+
+        Vector2 playerDir = (player.position - transform.position).normalized;
+        if (isChasing && isConcious)
+        {
+            rigidBody.velocity = new Vector2(playerDir.x * speed, rigidBody.velocity.y);
+        }
     }
 
-    private void Initialize() {
+
+    private void Initialize()
+    {
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         ChangeState(IDLE);
         player = FindObjectOfType<PlayerController>().transform;
     }
 
-    public void Knockout() {
+    public void Knockout()
+    {
         //Play Knockout Animation
         rigidBody.bodyType = RigidbodyType2D.Static;
         boxCollider.enabled = false;
@@ -76,6 +78,7 @@ public class Enemy : MonoBehaviour
     {
         isIdle = true;
         //Play Idle Animation
+        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         yield return new WaitForSeconds(2f);
         StartCoroutine(IdleAction());
 
@@ -85,13 +88,26 @@ public class Enemy : MonoBehaviour
     {
         isChasing = true;
         yield return new WaitForSeconds(1f);
+        isChasing = false;
+        StartCoroutine(ChaseAction());
     }
 
     IEnumerator CatchAction()
     {
+        if (isConcious) { 
+        isChasing = false;
+        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         //Play Catch Animation
+        var direction = (player.transform.position - transform.position).normalized;
+        var catchNet = Instantiate(net, transform.position+direction, Quaternion.identity);
+        catchNet.GetComponent<Net>().direction = direction;
+        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        catchNet.GetComponent<Net>().rotation = Quaternion.Euler(new Vector3(0,0,90 - angle));
         isCatching = true;
         yield return new WaitForSeconds(1f);
+        isCatching = false;
+        StartCoroutine(CatchAction());
+        }
     }
 
     private void ChangeState(string _newState)
