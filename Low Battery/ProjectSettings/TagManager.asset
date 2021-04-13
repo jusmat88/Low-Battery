@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - Battery
+  - MemoryStick
+  - Spikes
   layers:
   - Default
   - TransparentFX
