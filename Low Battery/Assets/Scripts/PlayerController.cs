@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Transform handpivot;
@@ -35,25 +34,6 @@ public class PlayerController : MonoBehaviour
         if (!canMove) { return; }
         AimHand();
         if (Input.GetMouseButtonUp(0)) { ShootGrabler(); }
-        //if (Input.GetMouseButton(0)) { 
-        //    wire.transform.position = Vector3.Lerp(handpivot.position, aimReticle.position, 0.5f);
-        //    float distance = Vector3.Distance(handpivot.position, aimReticle.position);
-        //    wire.transform.localScale = new Vector3(distance,0.2f,0);
-        //    wire.transform.rotation = handpivot.rotation;
-        //    grableStrength += Time.deltaTime*3;
-        //    aimReticle.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime);
-        //    if (grableStrength > 20)
-        //    {
-        //        grableStrength = 20;
-        //        aimReticle.transform.localScale = new Vector3(4, 4, 4);
-        //    }
-        //}
-        //else { 
-        //    wire.transform.position = new Vector3(1000, 0, 0); 
-        //    grableStrength = 10;
-        //    wire.transform.localScale = new Vector3(0, 0, 0);
-        //    aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
-        //}
 
         if (batteryLife > 0)
         {
@@ -99,7 +79,7 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         if (!canMove) { return; }
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position + new Vector3(0, 2, -10), 3 * Time.deltaTime);
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, transform.position + new Vector3(0, 0, -10), 3 * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
