@@ -184,7 +184,6 @@ public class PlayerController : MonoBehaviour
                 health = 0;
                 StartCoroutine(Death());
                 canMove = false;
-
             }
         }
     }

@@ -7,8 +7,6 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
-    
-
     private void OnEnable()
     {
         Time.timeScale = 1;

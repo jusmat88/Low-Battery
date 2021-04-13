@@ -57,7 +57,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     private void Initialize()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -76,6 +75,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator IdleAction()
     {
+        isChasing = false;
         isIdle = true;
         //Play Idle Animation
         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
