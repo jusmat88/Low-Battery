@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidBody;
     Vector3 mouseDirection;
     [SerializeField] private Transform aimReticle;
+    [SerializeField] private Transform wire;
     [SerializeField] private float batteryLife;
     [SerializeField] private float grableDistance;
     [SerializeField] private float grableStrength;
@@ -34,7 +35,25 @@ public class PlayerController : MonoBehaviour
         if (!canMove) { return; }
         AimHand();
         if (Input.GetMouseButtonUp(0)) { ShootGrabler(); }
-        if (Input.GetMouseButtonDown(0)) { AimMagnet(); }
+        //if (Input.GetMouseButton(0)) { 
+        //    wire.transform.position = Vector3.Lerp(handpivot.position, aimReticle.position, 0.5f);
+        //    float distance = Vector3.Distance(handpivot.position, aimReticle.position);
+        //    wire.transform.localScale = new Vector3(distance,0.2f,0);
+        //    wire.transform.rotation = handpivot.rotation;
+        //    grableStrength += Time.deltaTime*3;
+        //    aimReticle.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime);
+        //    if (grableStrength > 20)
+        //    {
+        //        grableStrength = 20;
+        //        aimReticle.transform.localScale = new Vector3(4, 4, 4);
+        //    }
+        //}
+        //else { 
+        //    wire.transform.position = new Vector3(1000, 0, 0); 
+        //    grableStrength = 10;
+        //    wire.transform.localScale = new Vector3(0, 0, 0);
+        //    aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        //}
 
         if (batteryLife > 0)
         {
@@ -51,8 +70,30 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove) { return; }
         RaycastHit2D rayHit = Physics2D.Raycast(handpivot.position, mouseDirection.normalized, grableDistance, GrableMask);
-        if (rayHit.collider != null) { aimReticle.transform.position = rayHit.point; }
-        else { aimReticle.transform.position = new Vector2(100, 100); }
+        if (rayHit.collider != null) { 
+            aimReticle.transform.position = rayHit.point;
+
+            if (Input.GetMouseButton(0))
+            {
+                wire.transform.position = Vector3.Lerp(handpivot.position, aimReticle.position, 0.5f);
+                float distance = Vector3.Distance(handpivot.position, aimReticle.position);
+                wire.transform.localScale = new Vector3(distance, 0.2f, 0);
+                wire.transform.rotation = handpivot.rotation;
+                grableStrength += Time.deltaTime * 3;
+                aimReticle.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime);
+                if (grableStrength > 20)
+                {
+                    grableStrength = 20;
+                    aimReticle.transform.localScale = new Vector3(4, 4, 4);
+                }
+            }
+        }
+        else { aimReticle.transform.position = new Vector2(100, 100);
+            wire.transform.position = new Vector3(1000, 0, 0);
+            grableStrength = 10;
+            wire.transform.localScale = new Vector3(0, 0, 0);
+            aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        }
     }
 
     private void LateUpdate()
@@ -173,11 +214,6 @@ public class PlayerController : MonoBehaviour
     {
         print("knocking out enemy");
         enemy.GetComponent<Enemy>().Knockout();
-    }
-
-    private void AimMagnet()
-    {
-
     }
 
     private void ReturnToStart()
