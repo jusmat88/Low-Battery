@@ -162,8 +162,7 @@ public class PlayerController : MonoBehaviour
             if (health <= 0)
             {
                 health = 0;
-                //Play Death Animation
-                SceneManager.LoadScene(3);
+                StartCoroutine(Death());
                 canMove = false;
 
             }
@@ -189,6 +188,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Death()
     {
         yield return new WaitForSeconds(1f);
+        //Play Death Animation
         SceneManager.LoadScene(3);
     }
 }
