@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool isAirborn = false;
     private bool isCharging = false;
     public int memoryStickAmount = 0;
+    [SerializeField] private Animator anim;
 
     private void OnDrawGizmos()
     {
@@ -34,16 +35,24 @@ public class PlayerController : MonoBehaviour
         if (!canMove) { return; }
         AimHand();
         if (Input.GetMouseButtonUp(0)) { ShootGrabler(); }
-
+        batteryText.text = batteryLife.ToString("f0") + " %";
         if (batteryLife > 0)
         {
             if (!isCharging)
             {
                 batteryLife -= Time.deltaTime;
-                batteryText.text = batteryLife.ToString("f0") + " %";
             }
         }
         else { canMove = false; StartCoroutine(Death()); }
+
+        if (isCharging)
+        {
+            batteryLife += 0.05f;
+            if (batteryLife > 100)
+            {
+                batteryLife = 100;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -67,12 +76,6 @@ public class PlayerController : MonoBehaviour
                     aimReticle.transform.localScale = new Vector3(4, 4, 4);
                 }
             }
-        }
-        else { aimReticle.transform.position = new Vector2(100, 100);
-            wire.transform.position = new Vector3(1000, 0, 0);
-            grableStrength = 10;
-            wire.transform.localScale = new Vector3(0, 0, 0);
-            aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
         }
     }
 
@@ -120,19 +123,10 @@ public class PlayerController : MonoBehaviour
         {
             Damage();
         }
-    }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
         if (collision.gameObject.tag == "Battery")
         {
             isCharging = true;
-            batteryLife += 0.1f;
-            batteryText.text = batteryLife.ToString("f0") + " %";
-            if (batteryLife > 100)
-            {
-                batteryLife = 100;
-            }
         }
     }
 
@@ -172,6 +166,11 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = Vector2.zero;
         rigidBody.AddForce(mouseDirection.normalized * grableStrength, ForceMode2D.Impulse);
         isAirborn = true;
+        aimReticle.transform.position = new Vector2(100, 100);
+        wire.transform.position = new Vector3(1000, 0, 0);
+        grableStrength = 10;
+        wire.transform.localScale = new Vector3(0, 0, 0);
+        aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
     }
 
     private void Damage()
@@ -198,11 +197,13 @@ public class PlayerController : MonoBehaviour
 
     private void ReturnToStart()
     {
-        transform.position = new Vector3(0.23f, -2.95f, 0);
+        transform.position = new Vector3(-7.1f, 39.3f, 0);
     }
 
     IEnumerator Death()
     {
+        handpivot.gameObject.SetActive(false);
+        anim.Play("Death");
         yield return new WaitForSeconds(1f);
         //Play Death Animation
         SceneManager.LoadScene(3);
