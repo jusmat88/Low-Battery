@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask GrableMask;
     [SerializeField] private int health = 5;
     private bool isAirborn = false;
+    private bool isCharging = false;
     [SerializeField] private int memoryStickAmount = 0;
 
     private void OnDrawGizmos()
@@ -37,8 +35,11 @@ public class PlayerController : MonoBehaviour
 
         if (batteryLife > 0)
         {
-            batteryLife -= Time.deltaTime;
-            batteryText.text = batteryLife.ToString("f0") + " %";
+            if (!isCharging)
+            {
+                batteryLife -= Time.deltaTime;
+                batteryText.text = batteryLife.ToString("f0") + " %";
+            }
         }
         else { canMove = false; }
     }
@@ -63,8 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Enemy>())
             {
-
-              KnockOutEnemy(collision.gameObject);
+                KnockOutEnemy(collision.gameObject);
             }
         }
 
@@ -86,15 +86,27 @@ public class PlayerController : MonoBehaviour
             memoryStickAmount += 1;
             Destroy(collision.gameObject);
         }
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Battery")
         {
-            batteryLife += 10;
-            Destroy(collision.gameObject);
+            isCharging = true;
+            batteryLife += 0.1f;
+            batteryText.text = batteryLife.ToString("f0") + " %";
             if (batteryLife > 100)
             {
                 batteryLife = 100;
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Battery")
+        {
+            isCharging = false;
         }
     }
 
@@ -134,8 +146,13 @@ public class PlayerController : MonoBehaviour
         healthText.text = health.ToString();
         if (health <= 0)
         {
+            health = 0;
             //Play Death Animation
             canMove = false;
+        }
+        else
+        {
+            ReturnToStart();
         }
     }
 
@@ -148,5 +165,10 @@ public class PlayerController : MonoBehaviour
     private void AimMagnet()
     {
 
+    }
+
+    private void ReturnToStart()
+    {
+        transform.position = new Vector3(0.23f, -2.95f, 0);
     }
 }

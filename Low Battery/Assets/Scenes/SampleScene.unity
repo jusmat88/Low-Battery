@@ -228,6 +228,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   health: 5
+  memoryStickAmount: 0
 --- !u!1 &219373393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reactionDistance: 6
-  catchDistance: 3
+  catchDistance: 4
   player: {fileID: 0}
   currentState: 
   speed: 1
@@ -1972,7 +1973,7 @@ GameObject:
   - component: {fileID: 2087298114}
   - component: {fileID: 2087298113}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Battery
   m_TagString: Battery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
