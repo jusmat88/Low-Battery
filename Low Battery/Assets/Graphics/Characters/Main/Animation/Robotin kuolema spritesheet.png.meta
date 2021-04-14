@@ -1,7 +1,32 @@
 fileFormatVersion: 2
-guid: 5c686b0dc6802b14984e9375a5bc47d8
+guid: 284463055ea3a424fb103ff726590842
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 427831166068254335
+    second: Robotin kuolema spritesheet_0
+  - first:
+      213: 378372764703424264
+    second: Robotin kuolema spritesheet_1
+  - first:
+      213: 2718087813665552556
+    second: Robotin kuolema spritesheet_2
+  - first:
+      213: -3211643458982190168
+    second: Robotin kuolema spritesheet_3
+  - first:
+      213: 5108357582160415428
+    second: Robotin kuolema spritesheet_4
+  - first:
+      213: -7652686019597482728
+    second: Robotin kuolema spritesheet_5
+  - first:
+      213: -7134028123710708075
+    second: Robotin kuolema spritesheet_6
+  - first:
+      213: -32300548711179711
+    second: Robotin kuolema spritesheet_7
+
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +66,8 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
+
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +101,213 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Robotin kuolema spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 236
+        width: 140
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76e655cd26ffe500800000000000000
+      internalID: 427831166068254335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robotin kuolema spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 228
+        width: 151
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f74d85600404500800000000000000
+      internalID: 378372764703424264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robotin kuolema spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 223
+        width: 176
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca87ad9277698b520800000000000000
+      internalID: 2718087813665552556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robotin kuolema spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 216
+        width: 197
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3e8224a43fd63d0800000000000000
+      internalID: -3211643458982190168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robotin kuolema spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 201
+        width: 215
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca485ed72884e640800000000000000
+      internalID: 5108357582160415428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robotin kuolema spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 259
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8154b406c923cc590800000000000000
+      internalID: -7652686019597482728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robotin kuolema spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 5
+        width: 257
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596a39c1837defc90800000000000000
+      internalID: -7134028123710708075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robotin kuolema spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 22
+        width: 293
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a150472de3d8ff0800000000000000
+      internalID: -32300548711179711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

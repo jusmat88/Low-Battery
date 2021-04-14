@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManagment : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.GetComponent<PlayerController>().memoryStickAmount >= 1)
+        if (collision.gameObject.GetComponent<PlayerController>().memoryStickAmount >= 5)
         {
             SceneManager.LoadScene(4);
         }

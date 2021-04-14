@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 931a5962ba0c0de41ae320258a4d6504
+guid: cd3568c2d9b6ed846886b5c7d22acd78
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3873057752390154795
-    second: robotti animaatio spritesheet_0
-  - first:
-      213: -7711569380135439321
-    second: robotti animaatio spritesheet_1
-  - first:
-      213: 8901625299442030107
-    second: robotti animaatio spritesheet_2
-  - first:
-      213: 6848866740229209722
-    second: robotti animaatio spritesheet_3
+      213: 1487519696229903636
+    second: "Robotin k\xE4si_0"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,10 +47,10 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.35488904, y: 0.49156332}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 325, y: 448, z: 327, w: 446}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -127,85 +118,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: robotti animaatio spritesheet_0
+      name: "Robotin k\xE4si_0"
       rect:
         serializedVersion: 2
-        x: 33
-        y: 72
-        width: 194
-        height: 408
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 332
+        y: 450
+        width: 347
+        height: 98
+      alignment: 9
+      pivot: {x: 0.09070976, y: 0.4099987}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d5463a9e72204ac0800000000000000
-      internalID: -3873057752390154795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: robotti animaatio spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 249
-        y: 73
-        width: 195
-        height: 406
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7247f34a1800bf490800000000000000
-      internalID: -7711569380135439321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: robotti animaatio spritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 468
-        y: 68
-        width: 196
-        height: 415
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b165fd80c0de88b70800000000000000
-      internalID: 8901625299442030107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: robotti animaatio spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 700
-        y: 69
-        width: 210
-        height: 417
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7e795d63001c0f50800000000000000
-      internalID: 6848866740229209722
+      spriteID: 41d2e22584bb4a410800000000000000
+      internalID: 1487519696229903636
       vertices: []
       indices: 
       edges: []
