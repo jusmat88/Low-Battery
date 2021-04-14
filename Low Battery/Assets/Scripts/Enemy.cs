@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+
         ChangeState(IDLE);
         player = FindObjectOfType<PlayerController>().transform;
     }
@@ -76,12 +77,12 @@ public class Enemy : MonoBehaviour
     IEnumerator IdleAction()
     {
         isChasing = false;
+        isCatching = false;
         isIdle = true;
         //Play Idle Animation
         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         yield return new WaitForSeconds(2f);
         StartCoroutine(IdleAction());
-
     }
 
     IEnumerator ChaseAction()
@@ -94,19 +95,18 @@ public class Enemy : MonoBehaviour
 
     IEnumerator CatchAction()
     {
-        if (isConcious) { 
-        isChasing = false;
-        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-        //Play Catch Animation
-        var direction = (player.transform.position - transform.position).normalized;
-        var catchNet = Instantiate(net, transform.position+direction, Quaternion.identity);
-        catchNet.GetComponent<Net>().direction = direction;
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        catchNet.GetComponent<Net>().rotation = Quaternion.Euler(new Vector3(0,0,90 - angle));
-        isCatching = true;
-        yield return new WaitForSeconds(1f);
-        isCatching = false;
-        StartCoroutine(CatchAction());
+        if (isConcious)
+        {
+            isChasing = false;
+            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+            //Play Catch Animation
+            Vector2 direction = player.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Instantiate(net, transform.position, Quaternion.Euler(new Vector3(0,0,angle)));
+            isCatching = true;
+            yield return new WaitForSeconds(2f);
+            isCatching = false;
+            StartCoroutine(CatchAction());
         }
     }
 

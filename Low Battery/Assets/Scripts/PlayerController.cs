@@ -1,7 +1,9 @@
+using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private bool isCharging = false;
     public int memoryStickAmount = 0;
     [SerializeField] private Animator anim;
+    [SerializeField] private TextMeshProUGUI btsTEXT;
+    [SerializeField] private Image btsBG;
 
     private void OnDrawGizmos()
     {
@@ -60,7 +64,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove) { return; }
         RaycastHit2D rayHit = Physics2D.Raycast(handpivot.position, mouseDirection.normalized, grableDistance, GrableMask);
-        if (rayHit.collider != null) { 
+        if (rayHit.collider != null)
+        {
             aimReticle.transform.position = rayHit.point;
 
             if (Input.GetMouseButton(0))
@@ -76,6 +81,13 @@ public class PlayerController : MonoBehaviour
                     grableStrength = 20;
                     aimReticle.transform.localScale = new Vector3(4, 4, 4);
                 }
+            }
+            else
+            {
+                aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+                aimReticle.transform.position = new Vector2(100, 100);
+                wire.transform.position = new Vector3(1000, 0, 0);
+                wire.transform.localScale = new Vector3(0, 0, 0);
             }
         }
     }
@@ -103,7 +115,11 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            if (rigidBody.velocity == Vector2.zero) { Damage(); ReturnToStart(); }
+            if (!isAirborn)
+            {
+                Damage();
+                StartCoroutine(ReturnToStart());
+            }
         }
     }
 
@@ -153,8 +169,8 @@ public class PlayerController : MonoBehaviour
         mouseDirection = mousePos - handpivot.position;
         mouseDirection.x = mouseDirection.x - Screen.width * 0.5f;
         mouseDirection.y = mouseDirection.y - Screen.height * 0.5f;
-        float angle = Mathf.Atan2(mouseDirection.x, mouseDirection.y) * Mathf.Rad2Deg;
-        handpivot.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90 - angle));
+        float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
+        handpivot.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
     private void ShootGrabler()
@@ -168,11 +184,7 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = Vector2.zero;
         rigidBody.AddForce(mouseDirection.normalized * grableStrength, ForceMode2D.Impulse);
         isAirborn = true;
-        aimReticle.transform.position = new Vector2(100, 100);
-        wire.transform.position = new Vector3(1000, 0, 0);
         grableStrength = 10;
-        wire.transform.localScale = new Vector3(0, 0, 0);
-        aimReticle.transform.localScale = new Vector3(0.5f, 0.5f, 1);
     }
 
     private void Damage()
@@ -196,9 +208,16 @@ public class PlayerController : MonoBehaviour
         enemy.GetComponent<Enemy>().Knockout();
     }
 
-    private void ReturnToStart()
+    private IEnumerator ReturnToStart()
     {
+        canMove = false;
+        btsBG.DOFade(0.5f, 0.5f);
+        btsTEXT.DOFade(1, 0.5f);
+        yield return new WaitForSeconds(1f);
         transform.position = new Vector3(-7.1f, 39.3f, 0);
+        btsBG.DOFade(0, 0);
+        btsTEXT.DOFade(0, 0);
+        canMove = true;
     }
 
     IEnumerator Death()

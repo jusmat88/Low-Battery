@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Net : MonoBehaviour
 {
-    public Vector2 direction;
-    public Quaternion rotation;
-    public float speed = 0.001f;
+    private float speed = 10f;
     float timeAlive = 0;
+    Rigidbody2D rigidBody;
+
+    private void Start()
+    {
+        rigidBody = GetComponent<Rigidbody2D>();
+        rigidBody.AddForce(transform.TransformDirection(Vector2.right) * speed, ForceMode2D.Impulse);
+    }
 
     void Update()
     {
-        transform.rotation = rotation;
-
-        transform.Translate(-direction * speed);
-
         if (timeAlive < 1)
         {
             timeAlive += Time.deltaTime;
