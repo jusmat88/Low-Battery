@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.3f1 (76626098c1c4) revision 7758432'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Education; OS build 19042.867; Version 2009; 64bit' Language: 'fi' Physical Memory: 16297 MB
+OS: 'Windows 10 Education; OS build 19042.928; Version 2009; 64bit' Language: 'fi' Physical Memory: 16297 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ D:/LowBatteryGit/Low-Battery/Low Battery
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55233
+53105
 Successfully changed project path to: D:/LowBatteryGit/Low-Battery/Low Battery
 D:/LowBatteryGit/Low-Battery/Low Battery
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 30.02 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 30.54 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.3f1 (76626098c1c4)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/Resources/UnitySubsystems
@@ -35,49 +35,136 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56276
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56496
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001414 seconds.
+Registered in 0.001429 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 28.99 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 29.39 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.846 seconds
+- Completed reload, in  0.799 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000872 seconds.
+Registered in 0.000882 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 28.35 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 29.23 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.723 seconds
+- Completed reload, in  0.712 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.51 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1839 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 87.4 MB.
 System memory in use after: 87.5 MB.
 
 Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 2289.
-Total: 6.011600 ms (FindLiveObjects: 0.467400 ms CreateObjectMapping: 0.247500 ms MarkObjects: 5.096900 ms  DeleteObjects: 0.197100 ms)
+Total: 5.902500 ms (FindLiveObjects: 0.703500 ms CreateObjectMapping: 0.241700 ms MarkObjects: 4.766300 ms  DeleteObjects: 0.188500 ms)
 
 ========================================================================
 Received Import Request.
   path: Assets/Graphics/Characters/Enemy/Animation/pyörtymis spritesheet.png
   artifactKey: Guid(0754c71e9c0442942b0cc21b0e934289) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Graphics/Characters/Enemy/Animation/pyörtymis spritesheet.png using Guid(0754c71e9c0442942b0cc21b0e934289) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed086e90b8a300d5e36a468ff891b49b') in 0.080705 seconds
-  Import took 0.091791 seconds .
+Start importing Assets/Graphics/Characters/Enemy/Animation/pyörtymis spritesheet.png using Guid(0754c71e9c0442942b0cc21b0e934289) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67e966d630e1b94cde40f502db76dc19') in 0.106061 seconds
+  Import took 0.111473 seconds .
 
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+========================================================================
+Received Import Request.
+  Time since last request: 0.000272 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/juoksu spritesheet.png
+  artifactKey: Guid(195d80857415ea94bbae418ed52041e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/juoksu spritesheet.png using Guid(195d80857415ea94bbae418ed52041e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc10f75747d8da4ee34790e457df50c6') in 0.033924 seconds
+  Import took 0.036295 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003022 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/juoksu spritesheet.png
+  artifactKey: Guid(195d80857415ea94bbae418ed52041e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/juoksu spritesheet.png using Guid(195d80857415ea94bbae418ed52041e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc10f75747d8da4ee34790e457df50c6') in 0.019007 seconds
+  Import took 0.021642 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.066970 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/Vihollis idle.png
+  artifactKey: Guid(a49ee17663db83947990f94759057de7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/Vihollis idle.png using Guid(a49ee17663db83947990f94759057de7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ec3717c3b4eb57dd2c838c9b55b6332') in 0.026790 seconds
+  Import took 0.029737 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 200.219056 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/Robotti idle.png
+  artifactKey: Guid(dba126cf214a1fa49853b573985e651f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/Robotti idle.png using Guid(dba126cf214a1fa49853b573985e651f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23b2834548dac668b95b5b03bcc06265') in 0.017708 seconds
+  Import took 0.020515 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.667587 seconds.
+  path: Assets/Graphics/Characters/Main/Animation/patterit loppu spritesheet.png
+  artifactKey: Guid(f30c1879fb3b9304ab7725b3117de9b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Main/Animation/patterit loppu spritesheet.png using Guid(f30c1879fb3b9304ab7725b3117de9b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7885a6b93fe49675be61c4bae5ba811d') in 0.011282 seconds
+  Import took 0.018456 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000236 seconds.
+  path: Assets/Graphics/Characters/Main/Animation/robotti animaatio spritesheet.png
+  artifactKey: Guid(7a620c56cb6d4d3418316b47bcb994cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Main/Animation/robotti animaatio spritesheet.png using Guid(7a620c56cb6d4d3418316b47bcb994cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1058f11139db74b36ea0666c07a30473') in 0.012249 seconds
+  Import took 0.014714 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000284 seconds.
+  path: Assets/Graphics/Characters/Main/Animation/patterit loppu spritesheet.png
+  artifactKey: Guid(f30c1879fb3b9304ab7725b3117de9b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Main/Animation/patterit loppu spritesheet.png using Guid(f30c1879fb3b9304ab7725b3117de9b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7885a6b93fe49675be61c4bae5ba811d') in 0.009366 seconds
+  Import took 0.011994 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Graphics/Characters/Main/Animation/Robotin kuolema spritesheet.png
+  artifactKey: Guid(5c686b0dc6802b14984e9375a5bc47d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Main/Animation/Robotin kuolema spritesheet.png using Guid(5c686b0dc6802b14984e9375a5bc47d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d08c8bafbccbdbc1025b241fe141b2f') in 0.013144 seconds
+  Import took 0.016286 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002513 seconds.
+  path: Assets/Graphics/Characters/Main/Animation/Robotin kuolema spritesheet.png
+  artifactKey: Guid(5c686b0dc6802b14984e9375a5bc47d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Main/Animation/Robotin kuolema spritesheet.png using Guid(5c686b0dc6802b14984e9375a5bc47d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d08c8bafbccbdbc1025b241fe141b2f') in 0.011761 seconds
+  Import took 0.014122 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.214330 seconds.
+  path: Assets/Graphics/Characters/Main/Animation/Robotti idle.png
+  artifactKey: Guid(00c8f088e6e9d8f4bbd371b66e15e174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Main/Animation/Robotti idle.png using Guid(00c8f088e6e9d8f4bbd371b66e15e174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '331e5877f4c47ce7eb35029169e0fdf2') in 0.020362 seconds
+  Import took 0.022692 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1192.692249 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/heitto spritesheet.png
+  artifactKey: Guid(224868c43d4b23b4c9d6e4d916833fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/heitto spritesheet.png using Guid(224868c43d4b23b4c9d6e4d916833fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83af9f1d425952ed0ea19fec9157b475') in 0.026073 seconds
+  Import took 0.029058 seconds .
+
