@@ -168,3 +168,59 @@ Received Import Request.
 Start importing Assets/Graphics/Characters/Enemy/Animation/heitto spritesheet.png using Guid(224868c43d4b23b4c9d6e4d916833fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83af9f1d425952ed0ea19fec9157b475') in 0.026073 seconds
   Import took 0.029058 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 78.043739 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/heitto spritesheet.png
+  artifactKey: Guid(224868c43d4b23b4c9d6e4d916833fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/heitto spritesheet.png using Guid(224868c43d4b23b4c9d6e4d916833fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc94f18e369e45b38eb2dea95f5bf830') in 0.015810 seconds
+  Import took 0.019138 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000375 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/Vihollis idle.png
+  artifactKey: Guid(a49ee17663db83947990f94759057de7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/Vihollis idle.png using Guid(a49ee17663db83947990f94759057de7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17ffb929f7a5d43c60ae51ff157c9680') in 0.072627 seconds
+  Import took 0.075417 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/heitto spritesheet.png
+  artifactKey: Guid(224868c43d4b23b4c9d6e4d916833fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/heitto spritesheet.png using Guid(224868c43d4b23b4c9d6e4d916833fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc94f18e369e45b38eb2dea95f5bf830') in 0.076324 seconds
+  Import took 0.078716 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000323 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/Vihollis idle.png
+  artifactKey: Guid(a49ee17663db83947990f94759057de7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/Vihollis idle.png using Guid(a49ee17663db83947990f94759057de7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17ffb929f7a5d43c60ae51ff157c9680') in 0.044922 seconds
+  Import took 0.047184 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3023.987819 seconds.
+  path: Assets/Graphics/Characters/Main/Animation/Robotti idle.png
+  artifactKey: Guid(00c8f088e6e9d8f4bbd371b66e15e174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Main/Animation/Robotti idle.png using Guid(00c8f088e6e9d8f4bbd371b66e15e174) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11a138933a42d93563576e7ecf8ca64a') in 0.021799 seconds
+  Import took 0.024887 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.572362 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/juoksu spritesheet 1.png
+  artifactKey: Guid(e9fd0f161016ffb45a7d610dcaff9d7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/juoksu spritesheet 1.png using Guid(e9fd0f161016ffb45a7d610dcaff9d7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68f2240bb6669ac2fff790b2a22f5e04') in 0.036045 seconds
+  Import took 0.038634 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 263.157713 seconds.
+  path: Assets/Graphics/Characters/Enemy/Animation/pyörtymis spritesheet 1.png
+  artifactKey: Guid(0f7656fd36d30f7408a942061493c129) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/Characters/Enemy/Animation/pyörtymis spritesheet 1.png using Guid(0f7656fd36d30f7408a942061493c129) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79d637e4d42d485b07653f02d56708db') in 0.027576 seconds
+  Import took 0.030251 seconds .
+
